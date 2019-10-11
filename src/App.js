@@ -69,7 +69,8 @@ class App extends React.Component {
           {}
 
           <div style={{ display: 'flex' }}>
-            <button onClick={this.voltarPagina.bind(this)} >
+            <button onClick={this.voltarPagina.bind(this)}
+            disabled={this.state.itemPagina === 0} >
               Voltar
         </button>
             <div>
