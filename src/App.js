@@ -27,7 +27,7 @@ class App extends React.Component {
 
   async filtrar(filtro) {
     var dados = await this.pegarDados(filtro);
-    this.setState({ lista: dados.data })
+    this.setState({ lista: dados.data, itemPagina: filtro? 0: this.state.itemPagina})
   }
 
   voltarPagina() {
@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-        <input onChange={(acao)=>this.filtrar(acao.target.value)}/>
+        <input onChange={(acao)=>this.filtrar(acao.target.value)} style={{width:350}}/>
           <ul>
             {this.state.lista.map(item => (
               <li style={{
@@ -67,7 +67,6 @@ class App extends React.Component {
             ))}
           </ul>
           {}
-
           <div style={{ display: 'flex' }}>
             <button onClick={this.voltarPagina.bind(this)}
             disabled={this.state.itemPagina === 0} >
@@ -81,7 +80,6 @@ class App extends React.Component {
         </button>
           </div>
         </header>
-
       </div>
     );
   }
